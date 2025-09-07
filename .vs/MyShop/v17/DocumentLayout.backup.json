@@ -1,0 +1,184 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\MVC\\MVC Project\\MyShop\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{655ACCFD-0622-4949-9D94-C288B597D529}|myshop.DataAccess\\myshop.DataAccess.csproj|d:\\mvc\\mvc project\\myshop\\myshop.dataaccess\\implementation\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{655ACCFD-0622-4949-9D94-C288B597D529}|myshop.DataAccess\\myshop.DataAccess.csproj|solutionrelative:myshop.dataaccess\\implementation\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5D085D78-F2AA-4065-87E0-D90789661785}|myshop.Business\\myshop.Business.csproj|d:\\mvc\\mvc project\\myshop\\myshop.business\\viewmodels\\productvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5D085D78-F2AA-4065-87E0-D90789661785}|myshop.Business\\myshop.Business.csproj|solutionrelative:myshop.business\\viewmodels\\productvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{655ACCFD-0622-4949-9D94-C288B597D529}|myshop.DataAccess\\myshop.DataAccess.csproj|d:\\mvc\\mvc project\\myshop\\myshop.dataaccess\\implementation\\categoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{655ACCFD-0622-4949-9D94-C288B597D529}|myshop.DataAccess\\myshop.DataAccess.csproj|solutionrelative:myshop.dataaccess\\implementation\\categoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FAF9AF84-3527-427E-AA89-064324EA96B8}|myshop.Web\\myshop.Web.csproj|d:\\mvc\\mvc project\\myshop\\myshop.web\\wwwroot\\js\\products.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{FAF9AF84-3527-427E-AA89-064324EA96B8}|myshop.Web\\myshop.Web.csproj|solutionrelative:myshop.web\\wwwroot\\js\\products.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FAF9AF84-3527-427E-AA89-064324EA96B8}|myshop.Web\\myshop.Web.csproj|d:\\mvc\\mvc project\\myshop\\myshop.web\\areas\\admin\\views\\product\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FAF9AF84-3527-427E-AA89-064324EA96B8}|myshop.Web\\myshop.Web.csproj|solutionrelative:myshop.web\\areas\\admin\\views\\product\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FAF9AF84-3527-427E-AA89-064324EA96B8}|myshop.Web\\myshop.Web.csproj|d:\\mvc\\mvc project\\myshop\\myshop.web\\areas\\admin\\views\\category\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FAF9AF84-3527-427E-AA89-064324EA96B8}|myshop.Web\\myshop.Web.csproj|solutionrelative:myshop.web\\areas\\admin\\views\\category\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FAF9AF84-3527-427E-AA89-064324EA96B8}|myshop.Web\\myshop.Web.csproj|d:\\mvc\\mvc project\\myshop\\myshop.web\\areas\\admin\\views\\category\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FAF9AF84-3527-427E-AA89-064324EA96B8}|myshop.Web\\myshop.Web.csproj|solutionrelative:myshop.web\\areas\\admin\\views\\category\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FAF9AF84-3527-427E-AA89-064324EA96B8}|myshop.Web\\myshop.Web.csproj|d:\\mvc\\mvc project\\myshop\\myshop.web\\areas\\admin\\views\\category\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FAF9AF84-3527-427E-AA89-064324EA96B8}|myshop.Web\\myshop.Web.csproj|solutionrelative:myshop.web\\areas\\admin\\views\\category\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FAF9AF84-3527-427E-AA89-064324EA96B8}|myshop.Web\\myshop.Web.csproj|d:\\mvc\\mvc project\\myshop\\myshop.web\\views\\shared\\_dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FAF9AF84-3527-427E-AA89-064324EA96B8}|myshop.Web\\myshop.Web.csproj|solutionrelative:myshop.web\\views\\shared\\_dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FAF9AF84-3527-427E-AA89-064324EA96B8}|myshop.Web\\myshop.Web.csproj|d:\\mvc\\mvc project\\myshop\\myshop.web\\areas\\admin\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FAF9AF84-3527-427E-AA89-064324EA96B8}|myshop.Web\\myshop.Web.csproj|solutionrelative:myshop.web\\areas\\admin\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GenericRepository.cs",
+              "DocumentMoniker": "D:\\MVC\\MVC Project\\MyShop\\myshop.DataAccess\\Implementation\\GenericRepository.cs",
+              "RelativeDocumentMoniker": "myshop.DataAccess\\Implementation\\GenericRepository.cs",
+              "ToolTip": "D:\\MVC\\MVC Project\\MyShop\\myshop.DataAccess\\Implementation\\GenericRepository.cs",
+              "RelativeToolTip": "myshop.DataAccess\\Implementation\\GenericRepository.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAQwCIAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-06T14:43:06.378Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CategoryRepository.cs",
+              "DocumentMoniker": "D:\\MVC\\MVC Project\\MyShop\\myshop.DataAccess\\Implementation\\CategoryRepository.cs",
+              "RelativeDocumentMoniker": "myshop.DataAccess\\Implementation\\CategoryRepository.cs",
+              "ToolTip": "D:\\MVC\\MVC Project\\MyShop\\myshop.DataAccess\\Implementation\\CategoryRepository.cs",
+              "RelativeToolTip": "myshop.DataAccess\\Implementation\\CategoryRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-06T14:42:58.975Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ProductVM.cs",
+              "DocumentMoniker": "D:\\MVC\\MVC Project\\MyShop\\myshop.Business\\ViewModels\\ProductVM.cs",
+              "RelativeDocumentMoniker": "myshop.Business\\ViewModels\\ProductVM.cs",
+              "ToolTip": "D:\\MVC\\MVC Project\\MyShop\\myshop.Business\\ViewModels\\ProductVM.cs",
+              "RelativeToolTip": "myshop.Business\\ViewModels\\ProductVM.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-06T14:42:15.971Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\MVC\\MVC Project\\MyShop\\myshop.Web\\Areas\\Admin\\Views\\Product\\Index.cshtml",
+              "RelativeDocumentMoniker": "myshop.Web\\Areas\\Admin\\Views\\Product\\Index.cshtml",
+              "ToolTip": "D:\\MVC\\MVC Project\\MyShop\\myshop.Web\\Areas\\Admin\\Views\\Product\\Index.cshtml",
+              "RelativeToolTip": "myshop.Web\\Areas\\Admin\\Views\\Product\\Index.cshtml",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-06T12:14:38.983Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\MVC\\MVC Project\\MyShop\\myshop.Web\\Areas\\Admin\\Views\\Category\\Index.cshtml",
+              "RelativeDocumentMoniker": "myshop.Web\\Areas\\Admin\\Views\\Category\\Index.cshtml",
+              "ToolTip": "D:\\MVC\\MVC Project\\MyShop\\myshop.Web\\Areas\\Admin\\Views\\Category\\Index.cshtml",
+              "RelativeToolTip": "myshop.Web\\Areas\\Admin\\Views\\Category\\Index.cshtml",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-06T12:13:06.971Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "D:\\MVC\\MVC Project\\MyShop\\myshop.Web\\Areas\\Admin\\Views\\Category\\Delete.cshtml",
+              "RelativeDocumentMoniker": "myshop.Web\\Areas\\Admin\\Views\\Category\\Delete.cshtml",
+              "ToolTip": "D:\\MVC\\MVC Project\\MyShop\\myshop.Web\\Areas\\Admin\\Views\\Category\\Delete.cshtml",
+              "RelativeToolTip": "myshop.Web\\Areas\\Admin\\Views\\Category\\Delete.cshtml",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-06T12:13:00.847Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\MVC\\MVC Project\\MyShop\\myshop.Web\\Areas\\Admin\\Views\\Category\\Create.cshtml",
+              "RelativeDocumentMoniker": "myshop.Web\\Areas\\Admin\\Views\\Category\\Create.cshtml",
+              "ToolTip": "D:\\MVC\\MVC Project\\MyShop\\myshop.Web\\Areas\\Admin\\Views\\Category\\Create.cshtml",
+              "RelativeToolTip": "myshop.Web\\Areas\\Admin\\Views\\Category\\Create.cshtml",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-06T12:12:55.726Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Products.js",
+              "DocumentMoniker": "D:\\MVC\\MVC Project\\MyShop\\myshop.Web\\wwwroot\\js\\Products.js",
+              "RelativeDocumentMoniker": "myshop.Web\\wwwroot\\js\\Products.js",
+              "ToolTip": "D:\\MVC\\MVC Project\\MyShop\\myshop.Web\\wwwroot\\js\\Products.js",
+              "RelativeToolTip": "myshop.Web\\wwwroot\\js\\Products.js",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAAwCIAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-09-06T12:07:23.573Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ProductController.cs",
+              "DocumentMoniker": "D:\\MVC\\MVC Project\\MyShop\\myshop.Web\\Areas\\Admin\\Controllers\\ProductController.cs",
+              "RelativeDocumentMoniker": "myshop.Web\\Areas\\Admin\\Controllers\\ProductController.cs",
+              "ToolTip": "D:\\MVC\\MVC Project\\MyShop\\myshop.Web\\Areas\\Admin\\Controllers\\ProductController.cs",
+              "RelativeToolTip": "myshop.Web\\Areas\\Admin\\Controllers\\ProductController.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAQwBoAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-06T08:01:33.762Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "_Dashboard.cshtml",
+              "DocumentMoniker": "D:\\MVC\\MVC Project\\MyShop\\myshop.Web\\Views\\Shared\\_Dashboard.cshtml",
+              "RelativeDocumentMoniker": "myshop.Web\\Views\\Shared\\_Dashboard.cshtml",
+              "ToolTip": "D:\\MVC\\MVC Project\\MyShop\\myshop.Web\\Views\\Shared\\_Dashboard.cshtml",
+              "RelativeToolTip": "myshop.Web\\Views\\Shared\\_Dashboard.cshtml",
+              "ViewState": "AgIAAB8BAAAAAAAAAAAAAC8BAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-06T07:41:33.714Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

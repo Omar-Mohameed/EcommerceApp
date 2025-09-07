@@ -1,0 +1,77 @@
+﻿@model ProductVM
+@{
+    ViewBag.PageTitle = "Product Management";
+    ViewBag.CardTitle = "Edit Product";
+    Layout = "/Views/Shared/_Dashboard.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <form method="post" asp-action="Edit" asp-controller="Product" enctype="multipart/form-data">
+            <input type="hidden" asp-for="Product.Id" />
+            <input type="hidden" asp-for="Product.Img" />
+
+
+            <!-- Product Name -->
+            <div class="mb-3">
+                <label asp-for="Product.Name" class="form-label"></label>
+                <input asp-for="Product.Name" class="form-control" />
+                <span asp-validation-for="Product.Name" class="text-danger"></span>
+            </div>
+
+            <!-- Description -->
+            <div class="mb-3">
+                <label asp-for="Product.Description" class="form-label"></label>
+                <textarea asp-for="Product.Description" class="form-control"></textarea>
+                <span asp-validation-for="Product.Description" class="text-danger"></span>
+            </div>
+
+            <!-- Price -->
+            <div class="mb-3">
+                <label asp-for="Product.Price" class="form-label"></label>
+                <input asp-for="Product.Price" class="form-control" />
+                <span asp-validation-for="Product.Price" class="text-danger"></span>
+            </div>
+
+            <!-- Current Image -->
+            @if (!string.IsNullOrEmpty(Model.Product.Img))
+            {
+                <div class="mb-3">
+                    <label>Current Image</label>
+                    <div>
+                        <img src="~/@Model.Product.Img" alt="Product Image" class="img-thumbnail" style="max-width: 250px;" />
+                    </div>
+                </div>
+            }
+
+            <!-- Upload New Image -->
+            <div class="mb-3">
+                <label asp-for="Product.Img" class="form-label"></label>
+                <input type="file" name="file" id="imgfile" class="form-control" />
+            </div>
+
+            <!-- Category -->
+            <div class="mb-3">
+                <label asp-for="Product.CategoryId" class="form-label"></label>
+                <select asp-for="Product.CategoryId" class="form-control" asp-items="@Model.categoryList">
+                    <option disabled selected>-- Select Category --</option>
+                </select>
+                <span asp-validation-for="Product.CategoryId" class="text-danger"></span>
+            </div>
+
+            <!-- Save and Back Buttons -->
+            <div class="mb-3">
+                <button type="submit" class="btn btn-outline-primary">
+                    <i class="bi bi-save"></i> Save
+                </button>
+                <a asp-action="Index" asp-controller="Product" class="btn btn-outline-secondary">
+                    <i class="bi bi-arrow-left"></i> Back
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

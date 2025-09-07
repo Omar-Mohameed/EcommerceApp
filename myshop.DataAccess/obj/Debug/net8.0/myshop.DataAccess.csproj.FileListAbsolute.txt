@@ -1,0 +1,17 @@
+D:\MVC\MVC Project\MyShop\myshop.DataAccess\obj\Debug\net8.0\myshop.DataAccess.csproj.AssemblyReference.cache
+D:\MVC\MVC Project\MyShop\myshop.DataAccess\obj\Debug\net8.0\myshop.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+D:\MVC\MVC Project\MyShop\myshop.DataAccess\obj\Debug\net8.0\myshop.DataAccess.AssemblyInfoInputs.cache
+D:\MVC\MVC Project\MyShop\myshop.DataAccess\obj\Debug\net8.0\myshop.DataAccess.AssemblyInfo.cs
+D:\MVC\MVC Project\MyShop\myshop.DataAccess\obj\Debug\net8.0\myshop.DataAccess.csproj.CoreCompileInputs.cache
+D:\MVC\MVC Project\MyShop\myshop.DataAccess\bin\Debug\net8.0\myshop.DataAccess.deps.json
+D:\MVC\MVC Project\MyShop\myshop.DataAccess\bin\Debug\net8.0\myshop.DataAccess.runtimeconfig.json
+D:\MVC\MVC Project\MyShop\myshop.DataAccess\bin\Debug\net8.0\myshop.DataAccess.dll
+D:\MVC\MVC Project\MyShop\myshop.DataAccess\bin\Debug\net8.0\myshop.DataAccess.pdb
+D:\MVC\MVC Project\MyShop\myshop.DataAccess\bin\Debug\net8.0\myshop.Business.dll
+D:\MVC\MVC Project\MyShop\myshop.DataAccess\bin\Debug\net8.0\myshop.Business.pdb
+D:\MVC\MVC Project\MyShop\myshop.DataAccess\obj\Debug\net8.0\myshop.D.0D8314D7.Up2Date
+D:\MVC\MVC Project\MyShop\myshop.DataAccess\obj\Debug\net8.0\myshop.DataAccess.dll
+D:\MVC\MVC Project\MyShop\myshop.DataAccess\obj\Debug\net8.0\refint\myshop.DataAccess.dll
+D:\MVC\MVC Project\MyShop\myshop.DataAccess\obj\Debug\net8.0\myshop.DataAccess.pdb
+D:\MVC\MVC Project\MyShop\myshop.DataAccess\obj\Debug\net8.0\myshop.DataAccess.genruntimeconfig.cache
+D:\MVC\MVC Project\MyShop\myshop.DataAccess\obj\Debug\net8.0\ref\myshop.DataAccess.dll
