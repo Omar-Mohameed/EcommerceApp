@@ -10,3 +10,4 @@ D:\MVC\MVC Project\MyShop\myshop.Business\obj\Debug\net8.0\refint\myshop.Busines
 D:\MVC\MVC Project\MyShop\myshop.Business\obj\Debug\net8.0\myshop.Business.pdb
 D:\MVC\MVC Project\MyShop\myshop.Business\obj\Debug\net8.0\ref\myshop.Business.dll
 D:\MVC\MVC Project\MyShop\myshop.Business\obj\Debug\net8.0\myshop.Business.csproj.AssemblyReference.cache
+D:\MVC\MVC Project\MyShop\myshop.Business\obj\Debug\net8.0\myshop.Business.sourcelink.json

@@ -1,4 +1,6 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using myshop.Business.Models;
 using myshop.Business.Repositories;
 using myshop.DataAccess.Data;
 using myshop.DataAccess.Implementation;
@@ -18,6 +20,13 @@ namespace myshop.Web
                 options.UseSqlServer(
                     builder.Configuration.GetConnectionString("DefaultConnection")
             ));
+
+            //builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false).AddEntityFrameworkStores<AppDbContext>();
+
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+            .AddEntityFrameworkStores<AppDbContext>()
+            .AddDefaultTokenProviders();
+
             builder.Services.AddScoped<IUnitOfWork,UnitOfWork>();
 
             var app = builder.Build();
@@ -36,10 +45,16 @@ namespace myshop.Web
             app.UseRouting();
 
             app.UseAuthorization();
+            app.MapRazorPages();
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{area=Admin}/{controller=Product}/{action=Index}/{id?}");
+                //pattern: "{area=Admin}/{controller=Product}/{action=Index}/{id?}");
+                pattern: "{area=Customer}/{controller=Home}/{action=Index}/{id?}");
+
+            app.MapControllerRoute(
+                name: "Customer",
+                pattern: "{area=Customer}/{controller=Home}/{action=Index}/{id?}");
 
             app.Run();
         }
