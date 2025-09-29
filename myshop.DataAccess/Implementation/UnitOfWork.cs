@@ -14,11 +14,15 @@ namespace myshop.DataAccess.Implementation
         private readonly AppDbContext _context;
         public ICategoryRepository Category { get; private set; }
         public IProductRepository Product { get; private set; }
+
+        public IGenericRepository<ApplicationUser> ApplicationUser { get; private set; }
+
         public UnitOfWork(AppDbContext context)
         {
             _context = context;
             Category = new CategoryRepository(context);
             Product = new ProductRepository(context);
+            ApplicationUser = new GenericRepository<ApplicationUser>(context);
         }
         
 

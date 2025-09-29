@@ -3781,6 +3781,19 @@
         "runtime": {
           "bin/placeholder/myshop.DataAccess.dll": {}
         }
+      },
+      "myshop.Utilities/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Microsoft.AspNetCore.Identity.UI": "8.0.11"
+        },
+        "compile": {
+          "bin/placeholder/myshop.Utilities.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/myshop.Utilities.dll": {}
+        }
       }
     }
   },
@@ -9800,6 +9813,11 @@
       "type": "project",
       "path": "../myshop.DataAccess/myshop.DataAccess.csproj",
       "msbuildProject": "../myshop.DataAccess/myshop.DataAccess.csproj"
+    },
+    "myshop.Utilities/1.0.0": {
+      "type": "project",
+      "path": "../myshop.Utilities/myshop.Utilities.csproj",
+      "msbuildProject": "../myshop.Utilities/myshop.Utilities.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -9810,7 +9828,8 @@
       "Microsoft.EntityFrameworkCore.Sqlite >= 8.0.11",
       "Microsoft.EntityFrameworkCore.Tools >= 8.0.19",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 8.0.7",
-      "myshop.DataAccess >= 1.0.0"
+      "myshop.DataAccess >= 1.0.0",
+      "myshop.Utilities >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -9847,6 +9866,9 @@
           "projectReferences": {
             "D:\\MVC\\MVC Project\\MyShop\\myshop.DataAccess\\myshop.DataAccess.csproj": {
               "projectPath": "D:\\MVC\\MVC Project\\MyShop\\myshop.DataAccess\\myshop.DataAccess.csproj"
+            },
+            "D:\\MVC\\MVC Project\\MyShop\\myshop.Utilities\\myshop.Utilities.csproj": {
+              "projectPath": "D:\\MVC\\MVC Project\\MyShop\\myshop.Utilities\\myshop.Utilities.csproj"
             }
           }
         }

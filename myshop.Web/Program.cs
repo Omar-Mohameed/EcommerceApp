@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using myshop.Business.Models;
 using myshop.Business.Repositories;
 using myshop.DataAccess.Data;
 using myshop.DataAccess.Implementation;
+using myshop.Utilities;
 
 namespace myshop.Web
 {
@@ -16,16 +18,18 @@ namespace myshop.Web
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
+            // Add DbContext
             builder.Services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(
                     builder.Configuration.GetConnectionString("DefaultConnection")
             ));
+            // Add Identity
+            builder.Services.AddIdentity<IdentityUser,IdentityRole>(
+                options=>options.Lockout.DefaultLockoutTimeSpan=TimeSpan.FromHours(1))
+                .AddDefaultTokenProviders().AddDefaultUI()
+                .AddEntityFrameworkStores<AppDbContext>();
 
-            //builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false).AddEntityFrameworkStores<AppDbContext>();
-
-            builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
-            .AddEntityFrameworkStores<AppDbContext>()
-            .AddDefaultTokenProviders();
+            builder.Services.AddSingleton<IEmailSender, EmailSender>();
 
             builder.Services.AddScoped<IUnitOfWork,UnitOfWork>();
 
