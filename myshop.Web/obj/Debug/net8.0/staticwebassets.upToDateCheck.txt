@@ -74,6 +74,7 @@ wwwroot\js\adminlte.js
 wwwroot\js\adminlte.js.map
 wwwroot\js\adminlte.min.js
 wwwroot\js\adminlte.min.js.map
+wwwroot\js\delete.js
 wwwroot\js\demo.js
 wwwroot\js\pages\dashboard.js
 wwwroot\js\pages\dashboard2.js
@@ -180,3 +181,5 @@ wwwroot\Plugins\jquery\jquery.min.map
 wwwroot\Plugins\jquery\jquery.slim.js
 wwwroot\Plugins\jquery\jquery.slim.min.js
 wwwroot\Plugins\jquery\jquery.slim.min.map
+wwwroot\shoppingcart\index.html
+wwwroot\shoppingcart\style.css

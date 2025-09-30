@@ -12,6 +12,7 @@ namespace myshop.Business.Repositories
         IGenericRepository<ApplicationUser> ApplicationUser { get; }
         ICategoryRepository Category { get; }
         IProductRepository Product { get; }
+        IShoppingCartRepository ShoppingCart { get; }
         int Complete();
     }
 }

@@ -9,7 +9,7 @@
                 <div class="col mb-5">
                     <div class="card h-100">
                         <!-- Product image-->
-                        <a asp-action="Details" asp-route-ProductId="@item.Id"><img class="card-img-top" src="~/@item.Img" alt="..." width="450" height="300" /></a>
+                        <a asp-action="Details" asp-route-id="@item.Id"><img class="card-img-top" src="~/@item.Img" alt="..." width="450" height="300" /></a>
                         <!-- Product details-->
                         <div class="card-body p-4">
                             <div class="text-center">
@@ -22,8 +22,8 @@
                         <!-- Product actions-->
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                             <div class="text-center">
-                                <a asp-action="Details" asp-route-ProductId="@item.Id" class="btn btn-outline-dark mt-auto">Add To Card</a>
-                                </div>
+                                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-dark mt-auto">Add To Card</a>
+                            </div>
                         </div>
                     </div>
                 </div>

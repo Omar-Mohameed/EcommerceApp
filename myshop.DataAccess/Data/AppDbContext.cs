@@ -13,5 +13,6 @@ namespace myshop.DataAccess.Data
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; } // Add this line to include ApplicationUser DbSet
+        public DbSet<ShoppingCart> ShoppingCarts { get; set; }
     }
 }
