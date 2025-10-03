@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("myshop.Business")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+edb6e724029caaebce2b44034480e8fd5d4b45de")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b6a817ae5917db67a4fdf45276401155ca899c89")]
 [assembly: System.Reflection.AssemblyProductAttribute("myshop.Business")]
 [assembly: System.Reflection.AssemblyTitleAttribute("myshop.Business")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

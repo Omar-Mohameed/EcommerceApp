@@ -27,6 +27,7 @@ wwwroot\css\alt\adminlte.plugins.css.map
 wwwroot\css\alt\adminlte.plugins.min.css
 wwwroot\css\alt\adminlte.plugins.min.css.map
 wwwroot\css\site.css
+wwwroot\css\summary.css
 wwwroot\customer\assets\favicon.ico
 wwwroot\customer\css\styles.css
 wwwroot\customer\js\scripts.js
@@ -44,6 +45,7 @@ wwwroot\img\avatar4.png
 wwwroot\img\avatar5.png
 wwwroot\img\boxed-bg.jpg
 wwwroot\img\boxed-bg.png
+wwwroot\img\checked.jpg
 wwwroot\img\credit\american-express.png
 wwwroot\img\credit\cirrus.png
 wwwroot\img\credit\mastercard.png
@@ -76,6 +78,7 @@ wwwroot\js\adminlte.min.js
 wwwroot\js\adminlte.min.js.map
 wwwroot\js\delete.js
 wwwroot\js\demo.js
+wwwroot\js\Orders.js
 wwwroot\js\pages\dashboard.js
 wwwroot\js\pages\dashboard2.js
 wwwroot\js\pages\dashboard3.js

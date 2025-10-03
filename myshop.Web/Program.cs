@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using myshop.Business.Models;
@@ -6,6 +6,7 @@ using myshop.Business.Repositories;
 using myshop.DataAccess.Data;
 using myshop.DataAccess.Implementation;
 using myshop.Utilities;
+using Stripe;
 
 namespace myshop.Web
 {
@@ -23,6 +24,8 @@ namespace myshop.Web
                 options.UseSqlServer(
                     builder.Configuration.GetConnectionString("DefaultConnection")
             ));
+            // stripe settings
+            builder.Services.Configure<StripeData>(builder.Configuration.GetSection("Stripe"));
             // Add Identity
             builder.Services.AddIdentity<IdentityUser,IdentityRole>(
                 options=>options.Lockout.DefaultLockoutTimeSpan=TimeSpan.FromHours(1))
@@ -32,6 +35,17 @@ namespace myshop.Web
             builder.Services.AddSingleton<IEmailSender, EmailSender>();
 
             builder.Services.AddScoped<IUnitOfWork,UnitOfWork>();
+
+            // add httpcontext accessor service
+            builder.Services.AddHttpContextAccessor();
+
+            // ✅ Session Service
+            builder.Services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
 
             var app = builder.Build();
 
@@ -47,6 +61,10 @@ namespace myshop.Web
             app.UseStaticFiles();
 
             app.UseRouting();
+            StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey").Get<string>();
+
+            // ✅ Session Middleware
+            app.UseSession();
 
             app.UseAuthorization();
             app.MapRazorPages();
