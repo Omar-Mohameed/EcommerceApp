@@ -55,7 +55,6 @@ namespace myshop.Web.Areas.Customer.Controllers
             ShoppingCartVM.OrderHeader.ApplicationUser = unitOfWork.ApplicationUser.GetFirstOrDefault(u => u.Id == userId);
 
             ShoppingCartVM.OrderHeader.Name = ShoppingCartVM.OrderHeader.ApplicationUser.Name;
-            ShoppingCartVM.OrderHeader.PhoneNumber = ShoppingCartVM.OrderHeader.ApplicationUser.PhoneNumber;
             ShoppingCartVM.OrderHeader.Address = ShoppingCartVM.OrderHeader.ApplicationUser.Address;
             ShoppingCartVM.OrderHeader.City = ShoppingCartVM.OrderHeader.ApplicationUser.City;
             ShoppingCartVM.OrderHeader.PhoneNumber = string.IsNullOrEmpty(ShoppingCartVM.OrderHeader.ApplicationUser?.PhoneNumber) ? "N/A" : ShoppingCartVM.OrderHeader.ApplicationUser.PhoneNumber;
@@ -110,8 +109,8 @@ namespace myshop.Web.Areas.Customer.Controllers
                     Count = cart.Count
                 };
                 unitOfWork.OrderDetail.Add(orderDetail);
-                unitOfWork.Complete();
             }
+            unitOfWork.Complete();
 
             // Stripe Settings
             var domain = "https://localhost:44366/";
@@ -146,7 +145,6 @@ namespace myshop.Web.Areas.Customer.Controllers
             var service = new SessionService();
             Session session = service.Create(options);
             shoppingCartVM.OrderHeader.SessionId = session.Id;
-            shoppingCartVM.OrderHeader.PaymentIntentId = session.PaymentIntentId;
 
             unitOfWork.Complete();
 

@@ -29,6 +29,7 @@ namespace myshop.DataAccess.Implementation
             if (orderFromDb != null)
             {
                 orderFromDb.OrderStatus = orderStatus;
+                orderFromDb.PaymentDate = DateTime.Now;
                 if (!string.IsNullOrEmpty(paymentStatus))
                 {
                     orderFromDb.PaymentStatus = paymentStatus;
