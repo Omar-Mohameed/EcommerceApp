@@ -1,4 +1,4 @@
-﻿@page
+﻿@* @page
 @model LoginModel
 
 
@@ -79,6 +79,112 @@
         </div>
     </div>
 </section>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+} *@
+
+
+
+
+
+
+@page
+@model LoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-5">
+                <div class="card shadow-lg border-0 rounded-4">
+                    <div class="card-body p-4">
+                        <h2 class="text-center mb-4 fw-bold text-primary">Welcome Back 👋</h2>
+                        <form id="account" method="post">
+                            <div asp-validation-summary="ModelOnly" class="text-danger text-center mb-3" role="alert"></div>
+
+                            <!-- Email -->
+                            <div class="form-floating mb-3">
+                                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                                <label asp-for="Input.Email">Email</label>
+                                <span asp-validation-for="Input.Email" class="text-danger"></span>
+                            </div>
+
+                            <!-- Password -->
+                            <div class="form-floating mb-3">
+                                <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="password" type="password" />
+                                <label asp-for="Input.Password">Password</label>
+                                <span asp-validation-for="Input.Password" class="text-danger"></span>
+                            </div>
+
+                            <!-- Remember Me -->
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" asp-for="Input.RememberMe" id="rememberMeCheck" />
+                                <label class="form-check-label" for="rememberMeCheck">
+                                    @Html.DisplayNameFor(m => m.Input.RememberMe)
+                                </label>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button id="login-submit" type="submit" class="btn btn-primary w-100 py-2">
+                                Log in
+                            </button>
+
+                            <hr class="my-4" />
+
+                            <!-- Extra Links -->
+                            <div class="text-center">
+                                <p class="mb-1">
+                                    <a id="forgot-password" asp-page="./ForgotPassword" class="text-decoration-none">Forgot your password?</a>
+                                </p>
+                                <p class="mb-1">
+                                    <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" class="text-decoration-none">Register as a new user</a>
+                                </p>
+                                <p>
+                                    <a id="resend-confirmation" asp-page="./ResendEmailConfirmation" class="text-decoration-none">Resend email confirmation</a>
+                                </p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- External Logins Section -->
+            @* <div class="col-md-6 mt-5 mt-md-0">
+                <div class="card shadow-sm border-0 rounded-4">
+                    <div class="card-body p-4">
+                        <h3 class="text-center fw-semibold">Use another service to log in</h3>
+                        <hr />
+                        @if ((Model.ExternalLogins?.Count ?? 0) == 0)
+                        {
+                            <div class="alert alert-info text-center">
+                                No external authentication services configured.
+                                <br />
+                                <a href="https://go.microsoft.com/fwlink/?LinkID=532715" target="_blank">Learn more</a>
+                            </div>
+                        }
+                        else
+                        {
+                            <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="text-center">
+                                @foreach (var provider in Model.ExternalLogins!)
+                                {
+                                    <button type="submit" class="btn btn-outline-primary m-2 px-4" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">
+                                        <i class="bi bi-box-arrow-in-right me-1"></i> @provider.DisplayName
+                                    </button>
+                                }
+                            </form>
+                        }
+                    </div>
+                </div>
+            </div> *@
+        </div>
+    </div>
+
+</section>
+
+
+
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }

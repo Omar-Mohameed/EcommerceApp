@@ -43,6 +43,7 @@
           "Microsoft.EntityFrameworkCore.Tools": "8.0.19",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "8.0.7",
           "Stripe.net": "49.0.0",
+          "X.PagedList.Mvc.Core": "10.5.9",
           "myshop.DataAccess": "1.0.0",
           "myshop.Utilities": "1.0.0",
           "Microsoft.AspNetCore.Antiforgery.Reference": "8.0.0.0",
@@ -2999,6 +3000,31 @@
       "System.Threading.Channels/7.0.0": {},
       "System.Threading.Tasks.Dataflow/7.0.0": {},
       "System.Threading.Tasks.Extensions/4.6.0": {},
+      "X.PagedList/10.5.9": {
+        "runtime": {
+          "lib/net8.0/X.PagedList.dll": {
+            "assemblyVersion": "10.5.9.0",
+            "fileVersion": "10.5.9.0"
+          }
+        },
+        "compile": {
+          "lib/net8.0/X.PagedList.dll": {}
+        }
+      },
+      "X.PagedList.Mvc.Core/10.5.9": {
+        "dependencies": {
+          "X.PagedList": "10.5.9"
+        },
+        "runtime": {
+          "lib/net8.0/X.PagedList.Mvc.Core.dll": {
+            "assemblyVersion": "10.5.9.0",
+            "fileVersion": "10.5.9.0"
+          }
+        },
+        "compile": {
+          "lib/net8.0/X.PagedList.Mvc.Core.dll": {}
+        }
+      },
       "myshop.Business/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.19",
@@ -6303,6 +6329,20 @@
       "sha512": "sha512-I5G6Y8jb0xRtGUC9Lahy7FUvlYlnGMMkbuKAQBy8Jb7Y6Yn8OlBEiUOY0PqZ0hy6Ua8poVA1ui1tAIiXNxGdsg==",
       "path": "system.threading.tasks.extensions/4.6.0",
       "hashPath": "system.threading.tasks.extensions.4.6.0.nupkg.sha512"
+    },
+    "X.PagedList/10.5.9": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-iwrGkIQn/puv4kNe23GVSPtpvKf5bl1aSbhIoWAhrl5LnvEmTwkGftlxSEFlgInVmMx1cb8Q7ivJPqxJtw7TAg==",
+      "path": "x.pagedlist/10.5.9",
+      "hashPath": "x.pagedlist.10.5.9.nupkg.sha512"
+    },
+    "X.PagedList.Mvc.Core/10.5.9": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-LhZwvTyUtn+BYVVc4ERCfZeK+br76nPQy8GTXg4pL9jOazusAUNiGkKBRFL/owOgAdTRKPLtHj+pBfZup7weyg==",
+      "path": "x.pagedlist.mvc.core/10.5.9",
+      "hashPath": "x.pagedlist.mvc.core.10.5.9.nupkg.sha512"
     },
     "myshop.Business/1.0.0": {
       "type": "project",

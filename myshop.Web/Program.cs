@@ -26,6 +26,9 @@ namespace myshop.Web
             ));
             // stripe settings
             builder.Services.Configure<StripeData>(builder.Configuration.GetSection("Stripe"));
+
+            StripeConfiguration.ApiKey = builder.Configuration["Stripe:SecretKey"];
+
             // Add Identity
             builder.Services.AddIdentity<IdentityUser,IdentityRole>(
                 options=>options.Lockout.DefaultLockoutTimeSpan=TimeSpan.FromHours(1))
@@ -39,13 +42,9 @@ namespace myshop.Web
             // add httpcontext accessor service
             builder.Services.AddHttpContextAccessor();
 
-            // ✅ Session Service
-            builder.Services.AddSession(options =>
-            {
-                options.IdleTimeout = TimeSpan.FromMinutes(30);
-                options.Cookie.HttpOnly = true;
-                options.Cookie.IsEssential = true;
-            });
+            // Session Service
+            builder.Services.AddDistributedMemoryCache(); // In-memory cache for session
+            builder.Services.AddSession();
 
             var app = builder.Build();
 
@@ -63,7 +62,7 @@ namespace myshop.Web
             app.UseRouting();
             StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey").Get<string>();
 
-            // ✅ Session Middleware
+            // Session Middleware
             app.UseSession();
 
             app.UseAuthorization();

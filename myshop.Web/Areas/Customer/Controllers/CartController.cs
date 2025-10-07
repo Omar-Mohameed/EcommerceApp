@@ -32,11 +32,13 @@ namespace myshop.Web.Areas.Customer.Controllers
 
             ShoppingCartVM = new ShoppingCartVM()
             {
-                CartsList = unitOfWork.ShoppingCart.GetAll(u => u.ApplicationUserId == userId, include: "Product")
+                CartsList = unitOfWork.ShoppingCart.GetAll(u => u.ApplicationUserId == userId, include: "Product"),
+                OrderHeader = new OrderHeader()
             };
             foreach (var cart in ShoppingCartVM.CartsList)
             {
                 ShoppingCartVM.totalCarts += (cart.Product.Price * cart.Count);
+                ShoppingCartVM.OrderHeader.totalPrice += (cart.Count * cart.Product.Price);
             }
             return View(ShoppingCartVM);
         }

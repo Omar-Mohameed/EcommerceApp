@@ -17,7 +17,9 @@
             </div>
             <div class="mb-3">
                 <label asp-for="Description"></label>
-                <input asp-for="Description" disabled class="form-control" />
+                <div class="form-control" style="resize:none;">
+                    @Html.Raw(Model.Description)
+                </div>
                 <span asp-validation-for="Description" class="text-danger"></span>
 
             </div>
@@ -36,4 +38,5 @@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+
 }

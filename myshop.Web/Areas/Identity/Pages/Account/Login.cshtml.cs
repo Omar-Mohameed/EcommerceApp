@@ -115,6 +115,7 @@ namespace myshop.Web.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
+                    TempData["Success"] = "Logged in successfully!";
                     return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)

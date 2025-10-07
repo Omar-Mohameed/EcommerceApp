@@ -27,6 +27,7 @@ namespace myshop.Web.Areas.Identity.Pages.Account
         {
             await _signInManager.SignOutAsync();
             _logger.LogInformation("User logged out.");
+            TempData["Delete"] = "logged out successfully!";
             if (returnUrl != null)
             {
                 return LocalRedirect(returnUrl);

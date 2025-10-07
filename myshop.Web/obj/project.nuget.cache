@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "e6xKZjXQohs=",
+  "dgSpecHash": "/OHeQsOgOOg=",
   "success": true,
   "projectFilePath": "D:\\MVC\\MVC Project\\MyShop\\myshop.Web\\myshop.Web.csproj",
   "expectedPackageFiles": [
@@ -213,7 +213,9 @@
     "C:\\Users\\Omar\\.nuget\\packages\\system.text.json\\7.0.3\\system.text.json.7.0.3.nupkg.sha512",
     "C:\\Users\\Omar\\.nuget\\packages\\system.threading.channels\\7.0.0\\system.threading.channels.7.0.0.nupkg.sha512",
     "C:\\Users\\Omar\\.nuget\\packages\\system.threading.tasks.dataflow\\7.0.0\\system.threading.tasks.dataflow.7.0.0.nupkg.sha512",
-    "C:\\Users\\Omar\\.nuget\\packages\\system.threading.tasks.extensions\\4.6.0\\system.threading.tasks.extensions.4.6.0.nupkg.sha512"
+    "C:\\Users\\Omar\\.nuget\\packages\\system.threading.tasks.extensions\\4.6.0\\system.threading.tasks.extensions.4.6.0.nupkg.sha512",
+    "C:\\Users\\Omar\\.nuget\\packages\\x.pagedlist\\10.5.9\\x.pagedlist.10.5.9.nupkg.sha512",
+    "C:\\Users\\Omar\\.nuget\\packages\\x.pagedlist.mvc.core\\10.5.9\\x.pagedlist.mvc.core.10.5.9.nupkg.sha512"
   ],
   "logs": []
 }

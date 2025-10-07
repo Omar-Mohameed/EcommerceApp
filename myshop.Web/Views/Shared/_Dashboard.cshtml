@@ -11,12 +11,15 @@
     <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="/css/adminlte.min.css">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
-
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Data Tables (https://datatables.net/)-->
     <link rel="stylesheet" href="//cdn.datatables.net/2.3.3/css/dataTables.dataTables.min.css" />
+    <!--tinyMCE-->
+    <script src="https://cdn.tiny.cloud/1/kpan9svhfp2ftdb7jguafcvykjf1g2hem969t9gwj865wpel/tinymce/8/tinymce.min.js" referrerpolicy="origin" crossorigin="anonymous"></script>
+
+
 </head>
 <body class="hold-transition sidebar-mini">
     <!-- Site wrapper -->
@@ -29,7 +32,7 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="/Admin/Product/Index" class="nav-link">Home</a>
+                    <a href="/Customer/Home/Index" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="#" class="nav-link">Contact</a>
@@ -196,7 +199,7 @@
                         <!-- Add icons to the links using the .nav-icon class
                              with font-awesome or any other icon font library -->
                         <li class="nav-item">
-                            <a href="/Customer/Home" class="nav-link">
+                            <a  asp-controller="Dashboard" asp-action="Index" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Dashboard
@@ -204,7 +207,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a asp-action="Index" asp-controller="Category" class="nav-link">
+                            <a asp-area="Admin" asp-controller="Category" asp-action="Index" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Categories
@@ -212,7 +215,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a asp-action="Index" asp-controller="Product" class="nav-link">
+                            <a asp-area="Admin" asp-controller="Product" asp-action="Index" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Products
@@ -220,7 +223,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a  asp-action="Index" asp-controller="Order" class="nav-link">
+                            <a asp-area="Admin" asp-controller="Order" asp-action="Index" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Orders
@@ -228,7 +231,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/Admin/Users/Index" class="nav-link">
+                            <a asp-area="Admin" asp-controller="Users" asp-action="Index" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Users
@@ -308,6 +311,8 @@
     <script src="//cdn.datatables.net/2.3.3/js/dataTables.min.js"></script>
     <!--Toastr-->
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+
     <!--sweet alert-->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 

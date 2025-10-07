@@ -32,10 +32,17 @@ wwwroot\customer\assets\favicon.ico
 wwwroot\customer\css\styles.css
 wwwroot\customer\js\scripts.js
 wwwroot\favicon.ico
+wwwroot\Images\Products\04dd38f0-1607-4ad4-bc83-8485af003270.jpg
+wwwroot\Images\Products\0f416925-b8c6-456b-8d83-8b2909e2517a.jpg
+wwwroot\Images\Products\268d06aa-279e-4ce5-8880-b505a77a252e.jpg
 wwwroot\Images\Products\3c48c702-934f-4288-9d2c-b257b4658137.jpg
 wwwroot\Images\Products\549bc100-9f3f-478a-b9fb-bd473423ac19.jpg
 wwwroot\Images\Products\7bcd2b82-2bb5-4c03-a8d8-9e6c9e76c777.jpg
+wwwroot\Images\Products\7c4ff862-c291-456a-b4bd-4982c5b04747.jpg
 wwwroot\Images\Products\8627af2f-9af6-43af-8f74-3011ddc37639.jpg
+wwwroot\Images\Products\92a9d575-f659-4a3a-884b-3bc4886dcf3c.jpg
+wwwroot\Images\Products\9df497c9-d39f-402f-a185-f9393bc3b39c.webp
+wwwroot\Images\Products\b600b9cf-6abc-45fd-86a9-bd2d86ef94b5.png
 wwwroot\Images\Products\f3e51229-25be-4471-8e55-5c5ffb063178.jpg
 wwwroot\img\AdminLTELogo.png
 wwwroot\img\avatar.png

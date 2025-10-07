@@ -1,0 +1,76 @@
+﻿@{
+    ViewBag.PageTitle = "Admin Dashboard";
+    ViewBag.CardTitle = "Overview";
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+
+<div class="container-fluid mt-4">
+    <div class="row g-4">
+        <div class="col-lg-3 col-md-6">
+            <div class="card shadow-sm border-0 bg-info text-white">
+                <div class="card-body text-center">
+                    <i class="fa-solid fa-cart-shopping fa-2x mb-2"></i>
+                    <h3>@ViewBag.Orders</h3>
+                    <p class="mb-0">All Orders</p>
+                </div>
+                <a href="/Admin/Order/Index" class="card-footer text-white text-center bg-dark">
+                    More info <i class="fas fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+            <div class="card shadow-sm border-0 bg-success text-white">
+                <div class="card-body text-center">
+                    <i class="fa-solid fa-circle-check fa-2x mb-2"></i>
+                    <h3>@ViewBag.ApprovedOrders</h3>
+                    <p class="mb-0">Approved Orders</p>
+                </div>
+                <a href="/Admin/Order/Index" class="card-footer text-white text-center bg-dark">
+                    More info <i class="fas fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+            <div class="card shadow-sm border-0 bg-warning text-white">
+                <div class="card-body text-center">
+                    <i class="fa-solid fa-users fa-2x mb-2"></i>
+                    <h3>@ViewBag.Users</h3>
+                    <p class="mb-0">User Registrations</p>
+                </div>
+                <a href="/Admin/Users/Index" class="card-footer text-white text-center bg-dark">
+                    More info <i class="fas fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+            <div class="card shadow-sm border-0 bg-danger text-white">
+                <div class="card-body text-center">
+                    <i class="fa-solid fa-box-open fa-2x mb-2"></i>
+                    <h3>@ViewBag.Products</h3>
+                    <p class="mb-0">Products</p>
+                </div>
+                <a href="/Admin/Product/Index" class="card-footer text-white text-center bg-dark">
+                    More info <i class="fas fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Stripe Earnings -->
+        <div class="col-lg-3 col-md-6">
+            <div class="card shadow-sm border-0 bg-primary text-white">
+                <div class="card-body text-center">
+                    <i class="fa-brands fa-stripe-s fa-2x mb-2"></i>
+                    <h3>$@ViewBag.TotalStripeRevenue</h3>
+                    <p class="mb-0">Total Sales via Stripe</p>
+                </div>
+                <a href="https://dashboard.stripe.com" target="_blank" class="card-footer text-white text-center bg-dark">
+                    View in Stripe <i class="fas fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

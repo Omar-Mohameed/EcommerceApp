@@ -1,7 +1,7 @@
 ﻿@model ProductVM
 @{
     ViewBag.PageTitle = "Product Management";
-    ViewBag.CardTitle = "Create Product";
+    ViewBag.CardTitle = "Product Product";
 }
 
 <div class="row">
@@ -15,7 +15,7 @@
 
             <div class="mb-3">
                 <label asp-for="Product.Description"></label>
-                <input asp-for="Product.Description" class="form-control" />
+                <input asp-for="Product.Description" id="mytextarea" class="form-control" />
                 <span asp-validation-for="Product.Description" class="text-danger"></span>
             </div>
 
@@ -27,7 +27,7 @@
 
             <div class="mb-3">
                 <label asp-for="Product.Img"></label>
-                <input type="file" name="file" id="imgfile" class="form-control" />
+                <input type="file" name="file" id="imgfile" class="form-control" onchange="fillimg(event)" />
             </div>
 
             <div class="mb-3">
@@ -42,16 +42,37 @@
                 <button type="submit" class="btn btn-outline-primary">
                     <i class="bi bi-plus-lg"></i> Create
                 </button>
-                <a asp-action="Index" asp-controller="Category" class="btn btn-outline-secondary">
+                <a asp-action="Index" asp-controller="Product" class="btn btn-outline-secondary">
                     <i class="bi bi-arrow-left"></i> Back
                 </a>
             </div>
 
         </form>
     </div>
+
+    <div class="col-md-4">
+        <div class="container">
+            <img id="ImagePrevew" src="~/@Model.Product.Img" class="img-thumbnail" width="300" height="300" />
+        </div>
+    </div>
 </div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+    <script>
+        tinymce.init({
+            selector: '#mytextarea'
+        });
+
+        // JavaScript function to preview the selected image
+        function fillimg(event) {
+            var reader = new FileReader();
+            reader.onload = function () {
+                var output = document.getElementById('ImagePrevew');
+                output.src = reader.result;
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
 
 }

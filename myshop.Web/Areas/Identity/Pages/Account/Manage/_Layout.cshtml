@@ -1,4 +1,4 @@
-﻿@{
+﻿@* @{
     if (ViewData.TryGetValue("ParentLayout", out var parentLayout) && parentLayout !=  null)
     {
         Layout = parentLayout.ToString();
@@ -26,4 +26,34 @@
 
 @section Scripts {
     @RenderSection("Scripts", required: false)
+} *@
+
+
+@{
+    // استخدم الـ layout الرئيسي للموقع بدل الافتراضي بتاع Identity
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+<div class="container mt-5 mb-5">
+    <h2 class="text-center mb-4">Manage Your Account</h2>
+    <hr />
+
+    <div class="row">
+        <!-- القائمة الجانبية -->
+        <div class="col-md-3 mb-3">
+            <partial name="_ManageNav" />
+        </div>
+
+        <!-- المحتوى الأساسي -->
+        <div class="col-md-9">
+            <div class="card shadow-sm border-0 rounded-3 p-4">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}
+
