@@ -16,3 +16,5 @@ D:\MVC\MVC Project\MyShop\myshop.DataAccess\obj\Debug\net8.0\myshop.DataAccess.p
 D:\MVC\MVC Project\MyShop\myshop.DataAccess\obj\Debug\net8.0\myshop.DataAccess.genruntimeconfig.cache
 D:\MVC\MVC Project\MyShop\myshop.DataAccess\obj\Debug\net8.0\ref\myshop.DataAccess.dll
 D:\MVC\MVC Project\MyShop\myshop.DataAccess\obj\Debug\net8.0\myshop.DataAccess.sourcelink.json
+D:\MVC\MVC Project\MyShop\myshop.DataAccess\bin\Debug\net8.0\myshop.Utilities.dll
+D:\MVC\MVC Project\MyShop\myshop.DataAccess\bin\Debug\net8.0\myshop.Utilities.pdb

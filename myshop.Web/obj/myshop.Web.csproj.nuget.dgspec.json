@@ -109,6 +109,9 @@
             "projectReferences": {
               "D:\\MVC\\MVC Project\\MyShop\\myshop.Business\\myshop.Business.csproj": {
                 "projectPath": "D:\\MVC\\MVC Project\\MyShop\\myshop.Business\\myshop.Business.csproj"
+              },
+              "D:\\MVC\\MVC Project\\MyShop\\myshop.Utilities\\myshop.Utilities.csproj": {
+                "projectPath": "D:\\MVC\\MVC Project\\MyShop\\myshop.Utilities\\myshop.Utilities.csproj"
               }
             }
           }

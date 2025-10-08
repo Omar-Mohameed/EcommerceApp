@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using myshop.Business.Models;
 using myshop.Business.Repositories;
 using myshop.DataAccess.Data;
+using myshop.DataAccess.DbInitializer;
 using myshop.DataAccess.Implementation;
 using myshop.Utilities;
 using Stripe;
@@ -36,8 +37,8 @@ namespace myshop.Web
                 .AddEntityFrameworkStores<AppDbContext>();
 
             builder.Services.AddSingleton<IEmailSender, EmailSender>();
-
             builder.Services.AddScoped<IUnitOfWork,UnitOfWork>();
+            builder.Services.AddScoped<IDbInitializer, DbInitializer>();
 
             // add httpcontext accessor service
             builder.Services.AddHttpContextAccessor();
@@ -62,6 +63,9 @@ namespace myshop.Web
             app.UseRouting();
             StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey").Get<string>();
 
+            // Seed Database
+            SeedDb();
+
             // Session Middleware
             app.UseSession();
 
@@ -78,6 +82,17 @@ namespace myshop.Web
                 pattern: "{area=Customer}/{controller=Home}/{action=Index}/{id?}");
 
             app.Run();
+
+            //Initialize the database
+            void SeedDb()
+            {
+
+                using (var scope = app.Services.CreateScope())
+                {
+                    var dbInitializer = scope.ServiceProvider.GetRequiredService<IDbInitializer>();
+                    dbInitializer.Initialize().Wait();
+                }
+            }
         }
     }
 }

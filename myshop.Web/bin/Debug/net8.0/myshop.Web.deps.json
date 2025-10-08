@@ -3044,7 +3044,8 @@
         "dependencies": {
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.19",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.19",
-          "myshop.Business": "1.0.0"
+          "myshop.Business": "1.0.0",
+          "myshop.Utilities": "1.0.0"
         },
         "runtime": {
           "myshop.DataAccess.dll": {
