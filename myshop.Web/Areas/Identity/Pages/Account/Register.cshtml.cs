@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.WebUtilities;
@@ -19,6 +20,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
+using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -111,6 +113,7 @@ namespace myshop.Web.Areas.Identity.Pages.Account
             public string Address { get; set; }
             public string City { get; set; }
             [Required(ErrorMessage = "Role is required")]
+            [ValidateNever]
             public string Role { get; set; }
         }
 
@@ -128,11 +131,14 @@ namespace myshop.Web.Areas.Identity.Pages.Account
         public async Task OnGetAsync(string returnUrl = null)
         {
             if (!await _roleManager.RoleExistsAsync(SD.AdminRole))
-            {
                 await _roleManager.CreateAsync(new IdentityRole(SD.AdminRole));
+
+            if (!await _roleManager.RoleExistsAsync(SD.EditorRole))
                 await _roleManager.CreateAsync(new IdentityRole(SD.EditorRole));
+
+            if (!await _roleManager.RoleExistsAsync(SD.CustomerRole))
                 await _roleManager.CreateAsync(new IdentityRole(SD.CustomerRole));
-            }
+
             ReturnUrl = returnUrl;
             // جيب كل الأدوار من قاعدة البيانات
             RoleList = GetRolesList();
@@ -144,6 +150,12 @@ namespace myshop.Web.Areas.Identity.Pages.Account
         {
             returnUrl ??= Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+            if (!User.IsInRole(SD.AdminRole))
+            {
+                // المستخدم العادي لا يختار Role — نحطها افتراضيًا
+                Input.Role = SD.CustomerRole;
+            }
+
             if (ModelState.IsValid)
             {
                 var user = CreateUser();
