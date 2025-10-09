@@ -356,7 +356,6 @@ D:\MVC\MVC Project\MyShop\myshop.Web\obj\Debug\net8.0\staticwebassets.build.json
 D:\MVC\MVC Project\MyShop\myshop.Web\obj\Debug\net8.0\staticwebassets.build.json.cache
 D:\MVC\MVC Project\MyShop\myshop.Web\obj\Debug\net8.0\staticwebassets.development.json
 D:\MVC\MVC Project\MyShop\myshop.Web\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-D:\MVC\MVC Project\MyShop\myshop.Web\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 D:\MVC\MVC Project\MyShop\myshop.Web\obj\Debug\net8.0\myshop.Web.csproj.Up2Date
 D:\MVC\MVC Project\MyShop\myshop.Web\obj\Debug\net8.0\myshop.Web.dll
 D:\MVC\MVC Project\MyShop\myshop.Web\obj\Debug\net8.0\refint\myshop.Web.dll
@@ -605,3 +604,4 @@ D:\MVC\MVC Project\MyShop\myshop.Web\bin\Debug\net8.0\myshop.Utilities.pdb
 D:\MVC\MVC Project\MyShop\myshop.Web\bin\Debug\net8.0\Stripe.net.dll
 D:\MVC\MVC Project\MyShop\myshop.Web\bin\Debug\net8.0\X.PagedList.dll
 D:\MVC\MVC Project\MyShop\myshop.Web\bin\Debug\net8.0\X.PagedList.Mvc.Core.dll
+D:\MVC\MVC Project\MyShop\myshop.Web\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
