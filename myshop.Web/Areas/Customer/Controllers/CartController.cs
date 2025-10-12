@@ -115,7 +115,7 @@ namespace myshop.Web.Areas.Customer.Controllers
             unitOfWork.Complete();
 
             // Stripe Settings
-            var domain = "https://localhost:44366/";
+            var domain = $"{Request.Scheme}://{Request.Host}/";
 
             var options = new SessionCreateOptions
             {
