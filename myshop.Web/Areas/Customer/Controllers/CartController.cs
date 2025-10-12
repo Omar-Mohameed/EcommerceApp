@@ -117,6 +117,7 @@ namespace myshop.Web.Areas.Customer.Controllers
             // Stripe Settings
             var domain = $"{Request.Scheme}://{Request.Host}/";
 
+
             var options = new SessionCreateOptions
             {
                 LineItems = new List<SessionLineItemOptions>(),
