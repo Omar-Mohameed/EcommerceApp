@@ -1,32 +1,67 @@
-﻿@if (TempData["Create"] != null)
+﻿@if (TempData["Create"] != null || TempData["Success"] != null ||
+     TempData["Update"] != null || TempData["Delete"] != null)
 {
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-    <script type="text/javascript">
-        toastr["success"]("@TempData["Create"]")
+    <script>
+        toastr.options = {
+            positionClass: "toast-top-right",
+            timeOut: 4000,
+            closeButton: true,
+            progressBar: true
+        };
+
+        @if (TempData["Create"] != null)
+        {
+            <text>toastr.success("@TempData["Create"]");</text>
+        }
+        @if (TempData["Success"] != null)
+        {
+            <text>toastr.success("@TempData["Success"]");</text>
+        }
+        @if (TempData["Update"] != null)
+        {
+            <text>toastr.info("@TempData["Update"]");</text>
+        }
+        @if (TempData["Delete"] != null)
+        {
+            <text>toastr.error("@TempData["Delete"]");</text>
+        }
     </script>
+    
 }
-@if (TempData["Success"] != null)
-{
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-    <script type="text/javascript">
-        toastr["success"]("@TempData["Success"]")
-    </script>
-}
-@if (TempData["Update"] != null)
-{
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-    <script type="text/javascript">
-        toastr["info"]("@TempData["Update"]")
-    </script>
-}
-@if (TempData["Delete"] != null)
-{
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-    <script type="text/javascript">
-        toastr["error"]("@TempData["Delete"]")
-    </script>
-}
+
+<style>
+    /* Fix toastr background transparency */
+    #toast-container > div {
+        opacity: 1 !important;
+        filter: none !important;
+    }
+
+    #toast-container > .toast-success {
+        background-color: #51a351 !important;
+        background-image: none !important;
+    }
+
+    #toast-container > .toast-error {
+        background-color: #bd362f !important;
+        background-image: none !important;
+    }
+
+    #toast-container > .toast-info {
+        background-color: #2f96b4 !important;
+        background-image: none !important;
+    }
+
+    #toast-container > .toast-warning {
+        background-color: #f89406 !important;
+        background-image: none !important;
+    }
+
+    #toast-container > div,
+    #toast-container > div:hover {
+        box-shadow: 0 4px 20px rgba(0,0,0,0.4) !important;
+        border-radius: 8px !important;
+        color: #fff !important;
+    }
+</style>

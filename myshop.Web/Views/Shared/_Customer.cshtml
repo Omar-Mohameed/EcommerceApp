@@ -7,45 +7,515 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
+    <meta name="description" content="myShop - Amazing products at great prices" />
     <meta name="author" content="" />
-    <title>myshop</title>
-    <!-- Favicon-->
+    <title>myShop</title>
+
+    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-    <!-- Bootstrap icons-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
 
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
-    <!-- Core theme CSS (includes Bootstrap)-->
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <!-- Toastr CSS -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+
+    <!-- Core theme CSS -->
     <link href="~/customer/css/styles.css" rel="stylesheet" />
 
+    <style>
+        /* ===== CSS Variables ===== */
+        :root {
+            --clr-bg: #f7f5f2;
+            --clr-surface: #ffffff;
+            --clr-ink: #1a1a1a;
+            --clr-ink-muted: #6b6b6b;
+            --clr-accent: #c8a96e;
+            --clr-accent-dk: #a8883e;
+            --clr-dark: #111111;
+            --clr-border: #e8e4de;
+            --nav-h: 70px;
+            --radius: 10px;
+            --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow-sm: 0 2px 12px rgba(0,0,0,0.06);
+            --shadow-md: 0 8px 30px rgba(0,0,0,0.10);
+        }
+
+        /* ===== Reset & Base ===== */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--clr-bg);
+            color: var(--clr-ink);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color var(--transition);
+        }
+
+        /* ===== Navbar ===== */
+        .site-nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            height: var(--nav-h);
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--clr-border);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        /* Brand */
+        .nav-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.55rem;
+            font-weight: 700;
+            color: var(--clr-ink);
+            letter-spacing: -0.3px;
+            white-space: nowrap;
+        }
+
+            .nav-brand span {
+                color: var(--clr-accent);
+            }
+
+        /* Nav Links */
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            list-style: none;
+            flex: 1;
+        }
+
+            .nav-links .nav-link {
+                padding: 0.45rem 0.85rem;
+                border-radius: 6px;
+                font-size: 0.9rem;
+                font-weight: 500;
+                color: var(--clr-ink-muted);
+                transition: all var(--transition);
+            }
+
+                .nav-links .nav-link:hover,
+                .nav-links .nav-link.active {
+                    color: var(--clr-ink);
+                    background: var(--clr-border);
+                }
+
+        /* Dropdown */
+        .dropdown-menu {
+            border: 1px solid var(--clr-border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-md);
+            padding: 0.5rem;
+            min-width: 200px;
+            background: var(--clr-surface);
+            animation: fadeDown 0.18s ease;
+        }
+
+        @@keyframes fadeDown {
+            from
+
+        {
+            opacity: 0;
+            transform: translateY(-6px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        }
+
+        .dropdown-item {
+            border-radius: 6px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--clr-ink);
+            padding: 0.55rem 0.85rem;
+            transition: background var(--transition), color var(--transition);
+        }
+
+            .dropdown-item:hover {
+                background: var(--clr-bg);
+                color: var(--clr-accent-dk);
+            }
+
+        .dropdown-divider {
+            border-color: var(--clr-border);
+            margin: 0.35rem 0;
+        }
+
+        /* Right-side actions */
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-left: auto;
+        }
+
+        /* Cart Button */
+        .btn-cart {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            background: var(--clr-border);
+            color: #fff;
+            padding: 0.5rem 1.1rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: background var(--transition), transform var(--transition);
+        }
+
+            .btn-cart:hover {
+                background: var(--clr-accent);
+                color: #fff;
+                transform: translateY(-1px);
+            }
+
+            .btn-cart .badge {
+                background: #fff;
+                color: var(--clr-dark);
+                font-size: 0.7rem;
+                font-weight: 700;
+                border-radius: 50px;
+                padding: 0.15em 0.5em;
+                min-width: 1.4em;
+                text-align: center;
+                line-height: 1.4;
+            }
+
+        /* Hamburger */
+        .navbar-toggler {
+            border: 1px solid var(--clr-border);
+            border-radius: 8px;
+            padding: 0.4rem 0.6rem;
+            background: transparent;
+            cursor: pointer;
+            color: var(--clr-ink);
+            font-size: 1.1rem;
+            transition: background var(--transition);
+        }
+
+            .navbar-toggler:hover {
+                background: var(--clr-bg);
+            }
+
+        /* ===== Hero Header ===== */
+        .site-hero {
+            background: var(--clr-dark);
+            padding: 6rem 2rem 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+            /* Decorative background pattern */
+            .site-hero::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: radial-gradient(ellipse 80% 60% at 70% 50%, rgba(200, 169, 110, 0.18) 0%, transparent 65%), radial-gradient(ellipse 40% 40% at 20% 80%, rgba(200, 169, 110, 0.08) 0%, transparent 60%);
+                pointer-events: none;
+            }
+
+            /* Subtle grid lines */
+            .site-hero::after {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+                background-size: 60px 60px;
+                pointer-events: none;
+            }
+
+        .hero-inner {
+            position: relative;
+            z-index: 1;
+            max-width: 1280px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-eyebrow {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--clr-accent);
+            background: rgba(200,169,110,0.12);
+            border: 1px solid rgba(200,169,110,0.3);
+            border-radius: 50px;
+            padding: 0.3em 1em;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.15;
+            margin-bottom: 1.1rem;
+            letter-spacing: -0.5px;
+        }
+
+            .hero-title em {
+                color: var(--clr-accent);
+                font-style: normal;
+            }
+
+        .hero-subtitle {
+            font-size: 1.05rem;
+            color: rgba(255,255,255,0.5);
+            font-weight: 300;
+            max-width: 480px;
+            margin: 0 auto 2rem;
+            line-height: 1.7;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--clr-accent);
+            color: var(--clr-dark);
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 0.03em;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            transition: background var(--transition), transform var(--transition);
+        }
+
+            .hero-cta:hover {
+                background: #fff;
+                color: var(--clr-dark);
+                transform: translateY(-2px);
+            }
+
+        /* ===== Main Content ===== */
+        .page-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* ===== Footer ===== */
+        .site-footer {
+            background: var(--clr-dark);
+            color: rgba(255,255,255,0.4);
+            padding: 2rem;
+            margin-top: auto;
+        }
+
+        .footer-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+            .footer-brand span {
+                color: var(--clr-accent);
+            }
+
+        .footer-copy {
+            font-size: 0.8rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.25rem;
+            list-style: none;
+        }
+
+            .footer-links a {
+                font-size: 0.8rem;
+                color: rgba(255,255,255,0.4);
+                transition: color var(--transition);
+            }
+
+                .footer-links a:hover {
+                    color: var(--clr-accent);
+                }
+
+        /* ===== Login Partial Overrides ===== */
+        .nav-actions .nav-link,
+        .nav-actions a {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--clr-ink-muted);
+            padding: 0.45rem 0.85rem;
+            border-radius: 6px;
+            transition: all var(--transition);
+        }
+
+            .nav-actions a:hover {
+                color: var(--clr-ink);
+                background: var(--clr-border);
+            }
+
+        .nav-actions .btn-primary,
+        .nav-actions .btn-outline-primary {
+            background: var(--clr-dark);
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            padding: 0.45rem 1.1rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            transition: background var(--transition);
+        }
+
+            .nav-actions .btn-primary:hover,
+            .nav-actions .btn-outline-primary:hover {
+                background: var(--clr-accent);
+                color: #fff;
+            }
+
+        /* ===== Responsive ===== */
+        @@media (max-width: 991px) {
+            .nav-links {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 0.75rem 0;
+            }
+
+            .navbar-collapse {
+                background: var(--clr-surface);
+                border-top: 1px solid var(--clr-border);
+                padding: 0.75rem 1.5rem;
+                margin-top: 0;
+            }
+
+            .nav-actions {
+                margin-left: 0;
+                padding: 0.75rem 0;
+                border-top: 1px solid var(--clr-border);
+                width: 100%;
+            }
+        }
+
+        @@media (max-width: 575px) {
+            .footer-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .site-hero {
+                padding: 4rem 1.5rem 3.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container px-4 px-lg-5">
-            <a class="navbar-brand" href="/Customer/Home/Index">myShop</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="/Customer/Home/Index">Home</a></li>
+
+    <!-- ===== Navbar ===== -->
+    <nav class="site-nav navbar navbar-expand-lg">
+        <div class="nav-inner w-100">
+
+            <!-- Brand -->
+            <a class="nav-brand" href="/Customer/Home/Index">my<span>Shop</span></a>
+
+            <!-- Toggler (mobile) -->
+            <button class="navbar-toggler ms-auto me-2 d-lg-none"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#mainNav"
+                    aria-controls="mainNav"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <i class="bi bi-list"></i>
+            </button>
+
+            <!-- Collapsible content -->
+            <div class="collapse navbar-collapse" id="mainNav">
+
+                <!-- Left links -->
+                <ul class="nav-links">
+                    <li>
+                        <a class="nav-link active" href="/Customer/Home/Index">
+                            <i class="bi bi-house me-1"></i> Home
+                        </a>
+                    </li>
+
                     @if (User.Identity.IsAuthenticated)
                     {
                         @if (User.IsInRole(SD.AdminRole))
                         {
-                            <li class="nav-item"><a class="nav-link active" href="/Admin/Dashboard/Index">Dashboard</a></li>
+                            <li>
+                                <a class="nav-link" href="/Admin/Dashboard/Index">
+                                    <i class="bi bi-grid me-1"></i> Dashboard
+                                </a>
+                            </li>
                         }
                         else
                         {
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-                                   role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    My Settings
+                                <a class="nav-link dropdown-toggle"
+                                   href="#"
+                                   id="userDropdown"
+                                   role="button"
+                                   data-bs-toggle="dropdown"
+                                   aria-expanded="false">
+                                    <i class="bi bi-person me-1"></i> My Account
                                 </a>
-                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <ul class="dropdown-menu" aria-labelledby="userDropdown">
                                     <li>
                                         <a class="dropdown-item" href="/Customer/Cart/Index">
-                                            <i class="bi bi-bag-check-fill me-2"></i> My Orders
+                                            <i class="bi bi-bag-check me-2"></i> My Orders
                                         </a>
                                     </li>
                                     <li><hr class="dropdown-divider" /></li>
@@ -56,72 +526,73 @@
                                     </li>
                                 </ul>
                             </li>
-
                         }
-
                     }
                 </ul>
-                 <partial name="_LoginPartial" /> 
-                @if (User.Identity.IsAuthenticated)
-                {
-                    <form class="d-flex">
-                        <a href="/Customer/Cart/Index" class="btn btn-outline-dark">
-                            <i class="bi-cart-fill me-1"></i>
+
+                <!-- Right actions -->
+                <div class="nav-actions">
+                    <partial name="_LoginPartial" />
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <a href="/Customer/Cart/Index" class="btn-cart">
+                            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
                             Cart
-
                             @await Component.InvokeAsync("ShoppingCart")
-                            @* @if (httpContextAccessor.HttpContext.Session.GetInt32(SD.SessionKey) != null)
-                            {
-                                <span class="badge bg-dark text-white ms-1 rounded-pill">
-                                    @httpContextAccessor.HttpContext.Session.GetInt32(SD.SessionKey)
-                                </span>
-                            }
-                            else
-                            {
-                                <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                            } *@
-
                         </a>
-                    </form>
-                }
-
+                    }
+                </div>
 
             </div>
         </div>
     </nav>
-    <!-- Header-->
-    <header class="bg-dark py-5">
-        <div class="container px-4 px-lg-5 my-5">
-            <div class="text-center text-white">
-                <h1 class="display-4 fw-bolder">Welcome to myShop</h1>
-                <p class="lead fw-normal text-white-50 mb-0">You Can Find Amazing Products with Good Prices</p>
-            </div>
+
+    <!-- ===== Hero Header ===== -->
+    <header class="site-hero">
+        <div class="hero-inner">
+            <span class="hero-eyebrow">New Arrivals Every Week</span>
+            <h1 class="hero-title">
+                Discover <em>Amazing</em><br />Products
+            </h1>
+            <p class="hero-subtitle">
+                Curated collections with unbeatable prices, delivered straight to your door.
+            </p>
+            <a href="#shop" class="hero-cta">
+                Shop Now <i class="bi bi-arrow-right"></i>
+            </a>
         </div>
     </header>
-    <!-- Section-->
+
+    <!-- ===== Toast Notifications ===== -->
     <partial name="_Toaster" />
-    @RenderBody()
-    <!-- Footer-->
-    <footer class="py-5 bg-dark">
-        <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
+
+    <!-- ===== Page Content ===== -->
+    <main id="shop" class="page-content">
+        @RenderBody()
+    </main>
+
+    <!-- ===== Footer ===== -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">my<span>Shop</span></div>
+            <ul class="footer-links">
+                <li><a href="#">About</a></li>
+                <li><a href="#">Privacy</a></li>
+                <li><a href="#">Terms</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <p class="footer-copy">&copy; @DateTime.Now.Year myShop. All rights reserved.</p>
+        </div>
     </footer>
 
-    <!--jquery-->
-    <script src="~/lib/jquery//dist/jquery.min.js"></script>
-    <!-- Bootstrap core JS (bundle includes Popper.js) -->
+    <!-- ===== Scripts ===== -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Core theme JS-->
     <script src="~/customer/js/scripts.js"></script>
-
-    <!-- Toastr -->
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
-
-    <!--sweet alert-->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
-

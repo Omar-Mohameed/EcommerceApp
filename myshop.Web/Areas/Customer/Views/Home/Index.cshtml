@@ -2,48 +2,170 @@
 @using X.PagedList.Mvc.Core
 @model IEnumerable<Product>
 
-<section class="py-5">
-    <div class="container px-4 px-lg-5 mt-5">
-        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+<section class="products-section py-5">
+    <div class="container">
+
+        <!-- Header -->
+        <div class="section-header text-center mb-5">
+            <h2 class="section-title">Our Products</h2>
+            <p class="section-subtitle">Discover high quality products at the best prices</p>
+        </div>
+
+        <!-- Products Grid -->
+        <div class="row g-4 row-cols-2 row-cols-md-3 row-cols-lg-4">
 
             @foreach (var item in Model)
             {
-                <div class="col mb-5">
-                    <div class="card h-100">
-                        <!-- Product image-->
-                        <a asp-action="Details" asp-route-id="@item.Id"><img class="card-img-top" src="~/@item.Img" alt="..." width="450" height="300" /></a>
-                        <!-- Product details-->
-                        <div class="card-body p-4">
-                            <div class="text-center">
-                                <!-- Product name-->
-                                <h5 class="fw-bolder">@item.Name</h5>
-                                <!-- Product price-->
-                                $@item.Price
-                            </div>
+                <div class="col">
+                    <div class="product-card">
+
+                        <!-- Image -->
+                        <a asp-action="Details" asp-route-id="@item.Id" class="product-image">
+                            <img src="~/@item.Img" alt="@item.Name" />
+                        </a>
+
+                        <!-- Body -->
+                        <div class="product-body">
+                            <h5 class="product-title">@item.Name</h5>
+                            <div class="product-price">$@item.Price</div>
                         </div>
-                        <!-- Product actions-->
-                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center">
-                                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-dark mt-auto">View Details</a>
-                            </div>
+
+                        <!-- Action -->
+                        <div class="product-footer">
+                            <a asp-action="Details"
+                               asp-route-id="@item.Id"
+                               class="btn-view">
+                                View Details
+                            </a>
                         </div>
+
                     </div>
                 </div>
-            }                        
+            }
 
         </div>
-       
 
-        <div class="container px-4 px-lg-5 mt-5">
-            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page = page }), 
-                    new PagedListRenderOptions {
-                        LiElementClasses = new string[] { "page-item" },
-                        PageClasses = new string[] { "page-link" }
-                })
-            </div>
+        <!-- Pagination -->
+        <div class="pagination-wrapper mt-5 d-flex justify-content-center">
+            @Html.PagedListPager((IPagedList)Model,
+            page => Url.Action("Index", new { page }),
+                        new PagedListRenderOptions
+                        {
+                            LiElementClasses = new string[] { "page-item" },
+                            PageClasses = new string[] { "page-link" }
+                        })
         </div>
 
-       
     </div>
 </section>
+
+
+<style>
+
+    /* ===== SECTION ===== */
+    .products-section {
+        background: #f7f5f2;
+    }
+
+    /* Header */
+    .section-title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #111;
+    }
+
+    .section-subtitle {
+        color: #777;
+        font-size: 0.95rem;
+    }
+
+    /* ===== PRODUCT CARD ===== */
+    .product-card {
+        background: #fff;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+        transition: 0.3s ease;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+
+    /* Image */
+    .product-image {
+        display: block;
+        overflow: hidden;
+    }
+
+        .product-image img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: 0.4s ease;
+        }
+
+    .product-card:hover .product-image img {
+        transform: scale(1.05);
+    }
+
+    /* Body */
+    .product-body {
+        padding: 15px;
+        text-align: center;
+    }
+
+    .product-title {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: #222;
+    }
+
+    .product-price {
+        font-size: 1rem;
+        font-weight: 700;
+        color: #c8a96e;
+    }
+
+    /* Footer */
+    .product-footer {
+        margin-top: auto;
+        padding: 15px;
+        text-align: center;
+    }
+
+    .btn-view {
+        display: inline-block;
+        padding: 8px 16px;
+        border-radius: 50px;
+        border: 1px solid #111;
+        color: #111;
+        font-size: 0.85rem;
+        font-weight: 600;
+        transition: 0.3s;
+    }
+
+        .btn-view:hover {
+            background: #111;
+            color: #fff;
+        }
+
+    /* ===== PAGINATION ===== */
+    .pagination .page-link {
+        color: #111;
+        border-radius: 8px;
+        margin: 0 3px;
+        border: 1px solid #ddd;
+    }
+
+    .pagination .page-item.active .page-link {
+        background: #c8a96e;
+        border-color: #c8a96e;
+        color: #fff;
+    }
+</style>

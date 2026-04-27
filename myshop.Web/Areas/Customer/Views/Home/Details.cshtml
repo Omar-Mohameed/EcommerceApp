@@ -1,28 +1,176 @@
 ﻿@model ShoppingCart
 
 <form method="post" asp-action="Details">
-    <section class="py-5">
-        <div class="container px-4 px-lg-5 my-5">
-            <div class="row gx-4 gx-lg-5 align-items-center">
+    <section class="product-details py-5">
+
+        <div class="container">
+
+            <div class="row g-5 align-items-center">
+
                 <input hidden asp-for="ProductId" />
-                <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="~/@Model.Product.Img" alt="..." width="600" height="700"></div>
+
+                <!-- IMAGE -->
                 <div class="col-md-6">
-                    <div class="small mb-1">@Model.Product.Category.Name</div>
-                    <h1 class="display-5 fw-bolder">@Model.Product.Name</h1>
-                    <div class="fs-5 mb-5">
-                        <span class="text-decoration-line-through">$@((int)Model.Product.Price*1.5)</span>
-                        <span>$@Model.Product.Price</span>
-                    </div>
-                    <p class="lead">@Html.Raw(Model.Product.Description)</p>
-                    <div class="d-flex">
-                        <input class="form-control text-center me-3" id="inputQuantity" asp-for="Count" style="max-width: 4rem">
-                        <button class="btn btn-outline-dark flex-shrink-0" type="submit">
-                            <i class="bi-cart-fill me-1"></i>
-                            Add to cart
-                        </button>
+                    <div class="product-image-box">
+                        <img src="~/@Model.Product.Img"
+                             alt="@Model.Product.Name"
+                             class="img-fluid product-main-img" />
                     </div>
                 </div>
+
+                <!-- DETAILS -->
+                <div class="col-md-6">
+
+                    <div class="product-meta mb-2">
+                        @Model.Product.Category.Name
+                    </div>
+
+                    <h1 class="product-title">
+                        @Model.Product.Name
+                    </h1>
+
+                    <div class="product-price mb-4">
+                        <span class="old-price">$@((int)Model.Product.Price * 1.5)</span>
+                        <span class="new-price">$@Model.Product.Price</span>
+                    </div>
+
+                    <div class="product-description mb-4">
+                        @Html.Raw(Model.Product.Description)
+                    </div>
+
+                    <!-- ACTIONS -->
+                    <div class="product-actions">
+
+                        <input class="quantity-input"
+                               id="inputQuantity"
+                               asp-for="Count" />
+
+                        <button class="btn-add-cart" type="submit">
+                            <i class="bi bi-cart-fill me-1"></i>
+                            Add to Cart
+                        </button>
+
+                    </div>
+
+                </div>
+
             </div>
+
         </div>
+
     </section>
 </form>
+
+                    <style>
+
+    /* ===== PRODUCT DETAILS ===== */
+    .product-details {
+        background: #f7f5f2;
+    }
+
+    /* Image */
+    .product-image-box {
+        background: #fff;
+        padding: 20px;
+        border-radius: 18px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+    }
+
+    .product-main-img {
+        width: 100%;
+        border-radius: 12px;
+        transition: 0.4s ease;
+    }
+
+        .product-main-img:hover {
+            transform: scale(1.03);
+        }
+
+    /* Meta */
+    .product-meta {
+        font-size: 0.85rem;
+        color: #888;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    /* Title */
+    .product-title {
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: #111;
+    }
+
+    /* Price */
+    .product-price {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+    }
+
+    .old-price {
+        text-decoration: line-through;
+        color: #999;
+    }
+
+    .new-price {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #c8a96e;
+    }
+
+    /* Description */
+    .product-description {
+        color: #555;
+        line-height: 1.7;
+    }
+
+    /* Actions */
+    .product-actions {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    /* Quantity */
+    .quantity-input {
+        width: 70px;
+        padding: 10px;
+        border-radius: 10px;
+        border: 1px solid #ddd;
+        text-align: center;
+        font-weight: 600;
+    }
+
+    /* Button */
+    .btn-add-cart {
+        background: #111;
+        color: #fff;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: 0.3s;
+    }
+
+        .btn-add-cart:hover {
+            background: #c8a96e;
+            transform: translateY(-2px);
+        }
+
+    /* Responsive */
+    @@media (max-width: 768px) {
+        .product-title
+
+    {
+        font-size: 1.7rem;
+        text-align: center;
+    }
+
+    .product-actions {
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    }
+                    </style>

@@ -1,190 +1,575 @@
-﻿@* @page
-@model LoginModel
-
-
-
-<h1>@ViewData["Title"]</h1>
-<section class="py-5">
-    <div class="container px-4 px-lg-5 mt-5">
-        <div class="row">
-            <div class="col-md-5">
-                <section>
-                    <form id="account" method="post">
-                        <h2>Use a local account to log in.</h2>
-                        <hr />
-                        <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
-                        <div class="form-floating mb-3">
-                            <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
-                            <label asp-for="Input.Email" class="form-label">Email</label>
-                            <span asp-validation-for="Input.Email" class="text-danger"></span>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="password" />
-                            <label asp-for="Input.Password" class="form-label">Password</label>
-                            <span asp-validation-for="Input.Password" class="text-danger"></span>
-                        </div>
-                        <div class="checkbox mb-3">
-                            <label asp-for="Input.RememberMe" class="form-label">
-                                <input class="form-check-input" asp-for="Input.RememberMe" />
-                                @Html.DisplayNameFor(m => m.Input.RememberMe)
-                            </label>
-                        </div>
-                        <div>
-                            <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
-                        </div>
-                        <div>
-                            <p>
-                                <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
-                            </p>
-                            <p>
-                                <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
-                            </p>
-                            <p>
-                                <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a>
-                            </p>
-                        </div>
-                    </form>
-                </section>
-            </div>
-            <div class="col-md-6 col-md-offset-2">
-                <section>
-                    <h3>Use another service to log in.</h3>
-                    <hr />
-                    @{
-                        if ((Model.ExternalLogins?.Count ?? 0) == 0)
-                        {
-                            <div>
-                                <p>
-                                    There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">article
-                                    about setting up this ASP.NET application to support logging in via external services</a>.
-                                </p>
-                            </div>
-                        }
-                        else
-                        {
-                            <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
-                                <div>
-                                    <p>
-                                        @foreach (var provider in Model.ExternalLogins!)
-                                        {
-                                            <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
-                                        }
-                                    </p>
-                                </div>
-                            </form>
-                        }
-                    }
-                </section>
-            </div>
-        </div>
-    </div>
-</section>
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-} *@
-
-
-
-
-
-
-@page
+﻿@page
 @model LoginModel
 @{
     ViewData["Title"] = "Login";
+    Layout = null; /* Full-page layout — no navbar wrapper */
 }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sign In — myShop</title>
 
-<section class="py-5">
-    <div class="container px-4 px-lg-5 mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-6 col-lg-5">
-                <div class="card shadow-lg border-0 rounded-4">
-                    <div class="card-body p-4">
-                        <h2 class="text-center mb-4 fw-bold text-primary">Welcome Back 👋</h2>
-                        <form id="account" method="post">
-                            <div asp-validation-summary="ModelOnly" class="text-danger text-center mb-3" role="alert"></div>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
 
-                            <!-- Email -->
-                            <div class="form-floating mb-3">
-                                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
-                                <label asp-for="Input.Email">Email</label>
-                                <span asp-validation-for="Input.Email" class="text-danger"></span>
-                            </div>
+    <style>
+        :root {
+            --bg: #080c14;
+            --bg2: #0d1220;
+            --surface: #111827;
+            --surface2: #1a2540;
+            --accent: #e8c97a;
+            --accent2: #f0d898;
+            --text1: #f0f4ff;
+            --text2: #8899bb;
+            --text3: #4a5a7a;
+            --border: rgba(255,255,255,0.07);
+            --border2: rgba(255,255,255,0.13);
+            --danger: #f87171;
+            --radius: 14px;
+        }
 
-                            <!-- Password -->
-                            <div class="form-floating mb-3">
-                                <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="password" type="password" />
-                                <label asp-for="Input.Password">Password</label>
-                                <span asp-validation-for="Input.Password" class="text-danger"></span>
-                            </div>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-                            <!-- Remember Me -->
-                            <div class="form-check mb-3">
-                                <input class="form-check-input" asp-for="Input.RememberMe" id="rememberMeCheck" />
-                                <label class="form-check-label" for="rememberMeCheck">
-                                    @Html.DisplayNameFor(m => m.Input.RememberMe)
-                                </label>
-                            </div>
+        html, body {
+            height: 100%;
+            font-family: 'Sora', sans-serif;
+            background: var(--bg);
+            color: var(--text1);
+        }
 
-                            <!-- Submit Button -->
-                            <button id="login-submit" type="submit" class="btn btn-primary w-100 py-2">
-                                Log in
-                            </button>
+        /* ── full-page split layout ── */
+        .auth-shell {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 480px;
+        }
 
-                            <hr class="my-4" />
+        /* ── left decorative panel ── */
+        .auth-left {
+            background: var(--bg2);
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px;
+            position: relative;
+            overflow: hidden;
+        }
 
-                            <!-- Extra Links -->
-                            <div class="text-center">
-                                <p class="mb-1">
-                                    <a id="forgot-password" asp-page="./ForgotPassword" class="text-decoration-none">Forgot your password?</a>
-                                </p>
-                                <p class="mb-1">
-                                    <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" class="text-decoration-none">Register as a new user</a>
-                                </p>
-                                <p>
-                                    <a id="resend-confirmation" asp-page="./ResendEmailConfirmation" class="text-decoration-none">Resend email confirmation</a>
-                                </p>
-                            </div>
-                        </form>
-                    </div>
+            .auth-left::before {
+                content: '';
+                position: absolute;
+                width: 600px;
+                height: 600px;
+                border-radius: 50%;
+                background: radial-gradient(circle, rgba(232,201,122,0.07) 0%, transparent 70%);
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                pointer-events: none;
+            }
+
+            .auth-left::after {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+                background-size: 48px 48px;
+                mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+                pointer-events: none;
+            }
+
+        .left-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 400px;
+        }
+
+        .left-logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text1);
+            margin-bottom: 48px;
+            letter-spacing: -0.5px;
+        }
+
+            .left-logo span {
+                color: var(--accent);
+            }
+
+        .left-headline {
+            font-size: 38px;
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -1px;
+            color: var(--text1);
+            margin-bottom: 16px;
+        }
+
+            .left-headline em {
+                font-style: normal;
+                color: var(--accent);
+            }
+
+        .left-sub {
+            font-size: 14px;
+            font-weight: 300;
+            color: var(--text2);
+            line-height: 1.8;
+            margin-bottom: 48px;
+        }
+
+        .left-stats {
+            display: flex;
+            gap: 32px;
+            justify-content: center;
+            border-top: 1px solid var(--border);
+            padding-top: 32px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-n {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text1);
+        }
+
+        .stat-l {
+            font-size: 10px;
+            color: var(--text3);
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            margin-top: 2px;
+        }
+
+        /* ── right form panel ── */
+        .auth-right {
+            background: var(--surface);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 56px 52px;
+            position: relative;
+        }
+
+        .form-header {
+            margin-bottom: 36px;
+        }
+
+        .form-eyebrow {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+            .form-eyebrow::before {
+                content: '';
+                width: 20px;
+                height: 2px;
+                background: var(--accent);
+                border-radius: 2px;
+            }
+
+        .form-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text1);
+            letter-spacing: -0.5px;
+            margin-bottom: 6px;
+        }
+
+        .form-sub {
+            font-size: 13px;
+            color: var(--text2);
+            font-weight: 300;
+        }
+
+        /* ── input fields ── */
+        .field {
+            margin-bottom: 16px;
+        }
+
+            .field label {
+                display: block;
+                font-size: 11px;
+                font-weight: 600;
+                color: var(--text2);
+                text-transform: uppercase;
+                letter-spacing: 0.6px;
+                margin-bottom: 8px;
+            }
+
+        .field-wrap {
+            position: relative;
+        }
+
+            .field-wrap .field-icon {
+                position: absolute;
+                left: 14px;
+                top: 50%;
+                transform: translateY(-50%);
+                color: var(--text3);
+                font-size: 15px;
+                pointer-events: none;
+                transition: color 0.2s;
+            }
+
+            .field-wrap input {
+                width: 100%;
+                background: var(--surface2);
+                border: 1px solid var(--border2);
+                border-radius: 10px;
+                padding: 13px 14px 13px 42px;
+                font-size: 14px;
+                font-family: 'Sora', sans-serif;
+                color: var(--text1);
+                transition: border-color 0.2s, box-shadow 0.2s;
+                outline: none;
+            }
+
+                .field-wrap input::placeholder {
+                    color: var(--text3);
+                }
+
+                .field-wrap input:focus {
+                    border-color: rgba(232,201,122,0.5);
+                    box-shadow: 0 0 0 3px rgba(232,201,122,0.08);
+                }
+
+                    .field-wrap input:focus + .field-icon,
+                    .field-wrap input:focus ~ .field-icon {
+                        color: var(--accent);
+                    }
+
+            /* override for icon position after input in DOM */
+            .field-wrap .field-icon {
+                z-index: 1;
+            }
+
+        /* ── remember row ── */
+        .remember-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+        }
+
+        .check-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--text2);
+            cursor: pointer;
+        }
+
+            .check-label input[type=checkbox] {
+                width: 16px;
+                height: 16px;
+                accent-color: var(--accent);
+                cursor: pointer;
+            }
+
+        .forgot-link {
+            font-size: 12px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+            .forgot-link:hover {
+                color: var(--accent2);
+            }
+
+        /* ── submit btn ── */
+        .btn-submit {
+            width: 100%;
+            background: var(--accent);
+            color: #0a0a0a;
+            border: none;
+            border-radius: 10px;
+            padding: 14px;
+            font-size: 14px;
+            font-family: 'Sora', sans-serif;
+            font-weight: 700;
+            cursor: pointer;
+            letter-spacing: 0.2px;
+            transition: background 0.2s, transform 0.15s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+            .btn-submit:hover {
+                background: var(--accent2);
+                transform: translateY(-1px);
+            }
+
+            .btn-submit:active {
+                transform: translateY(0);
+            }
+
+        /* ── divider ── */
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 24px 0;
+        }
+
+            .divider::before, .divider::after {
+                content: '';
+                flex: 1;
+                height: 1px;
+                background: var(--border);
+            }
+
+            .divider span {
+                font-size: 11px;
+                color: var(--text3);
+                font-weight: 500;
+                white-space: nowrap;
+            }
+
+        /* ── bottom links ── */
+        .auth-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+            .auth-links a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 6px;
+                padding: 11px;
+                border-radius: 10px;
+                border: 1px solid var(--border2);
+                background: var(--surface2);
+                font-size: 13px;
+                color: var(--text2);
+                text-decoration: none;
+                font-weight: 400;
+                transition: all 0.2s;
+            }
+
+                .auth-links a:hover {
+                    border-color: rgba(232,201,122,0.3);
+                    color: var(--accent);
+                    background: rgba(232,201,122,0.05);
+                }
+
+        .register-cta {
+            margin-top: 28px;
+            text-align: center;
+            font-size: 13px;
+            color: var(--text3);
+        }
+
+            .register-cta a {
+                color: var(--accent);
+                text-decoration: none;
+                font-weight: 600;
+            }
+
+                .register-cta a:hover {
+                    color: var(--accent2);
+                }
+
+        /* ── validation ── */
+        .validation-summary-errors {
+            background: rgba(248,113,113,0.08);
+            border: 1px solid rgba(248,113,113,0.2);
+            border-radius: 10px;
+            padding: 12px 16px;
+            margin-bottom: 20px;
+            font-size: 13px;
+            color: var(--danger);
+        }
+
+        .field-error {
+            font-size: 11px;
+            color: var(--danger);
+            margin-top: 5px;
+            display: block;
+        }
+
+        /* ── back link ── */
+        .back-link {
+            position: absolute;
+            top: 28px;
+            left: 28px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            color: var(--text3);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+            .back-link:hover {
+                color: var(--text2);
+            }
+
+        /* ── responsive ── */
+        @@media (max-width: 860px) {
+            .auth-shell {
+                grid-template-columns: 1fr;
+            }
+
+            .auth-left {
+                display: none;
+            }
+
+            .auth-right {
+                padding: 48px 32px;
+            }
+        }
+
+        @@media (max-width: 480px) {
+            .auth-right {
+                padding: 40px 24px;
+            }
+
+            .form-title {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-shell">
+
+        <!-- ── LEFT PANEL ── -->
+        <div class="auth-left">
+            <div class="left-content">
+                <div class="left-logo">my<span>Shop</span></div>
+
+                <h1 class="left-headline">
+                    Your favourite<br>
+                    store is <em>one<br>click away</em>
+                </h1>
+                <p class="left-sub">
+                    Thousands of products, unbeatable prices,<br>
+                    and delivery straight to your door.
+                </p>
+
+                <div class="left-stats">
+                    <div class="stat"><div class="stat-n">12K+</div><div class="stat-l">Products</div></div>
+                    <div class="stat"><div class="stat-n">98%</div><div class="stat-l">Satisfied</div></div>
+                    <div class="stat"><div class="stat-n">24/7</div><div class="stat-l">Support</div></div>
                 </div>
             </div>
+        </div>
 
-            <!-- External Logins Section -->
-            @* <div class="col-md-6 mt-5 mt-md-0">
-                <div class="card shadow-sm border-0 rounded-4">
-                    <div class="card-body p-4">
-                        <h3 class="text-center fw-semibold">Use another service to log in</h3>
-                        <hr />
-                        @if ((Model.ExternalLogins?.Count ?? 0) == 0)
-                        {
-                            <div class="alert alert-info text-center">
-                                No external authentication services configured.
-                                <br />
-                                <a href="https://go.microsoft.com/fwlink/?LinkID=532715" target="_blank">Learn more</a>
-                            </div>
-                        }
-                        else
-                        {
-                            <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="text-center">
-                                @foreach (var provider in Model.ExternalLogins!)
-                                {
-                                    <button type="submit" class="btn btn-outline-primary m-2 px-4" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">
-                                        <i class="bi bi-box-arrow-in-right me-1"></i> @provider.DisplayName
-                                    </button>
-                                }
-                            </form>
-                        }
+        <!-- ── RIGHT FORM PANEL ── -->
+        <div class="auth-right">
+
+            <a href="/Customer/Home/Index" class="back-link">
+                <i class="bi bi-arrow-left"></i> Back to store
+            </a>
+
+            <div class="form-header">
+                <div class="form-eyebrow">Welcome back</div>
+                <h2 class="form-title">Sign in to myShop</h2>
+                <p class="form-sub">Enter your credentials to continue shopping</p>
+            </div>
+
+            <form id="account" method="post">
+
+                <div asp-validation-summary="ModelOnly" class="validation-summary-errors" role="alert"></div>
+
+                <!-- Email -->
+                <div class="field">
+                    <label asp-for="Input.Email">Email address</label>
+                    <div class="field-wrap">
+                        <i class="bi bi-envelope field-icon"></i>
+                        <input asp-for="Input.Email"
+                               autocomplete="username"
+                               aria-required="true"
+                               placeholder="you@example.com" />
                     </div>
+                    <span asp-validation-for="Input.Email" class="field-error"></span>
                 </div>
-            </div> *@
+
+                <!-- Password -->
+                <div class="field">
+                    <label asp-for="Input.Password">Password</label>
+                    <div class="field-wrap">
+                        <i class="bi bi-lock field-icon"></i>
+                        <input asp-for="Input.Password"
+                               type="password"
+                               autocomplete="current-password"
+                               aria-required="true"
+                               placeholder="••••••••" />
+                    </div>
+                    <span asp-validation-for="Input.Password" class="field-error"></span>
+                </div>
+
+                <!-- Remember + Forgot -->
+                <div class="remember-row">
+                    <label class="check-label">
+                        <input asp-for="Input.RememberMe" type="checkbox" />
+                        @Html.DisplayNameFor(m => m.Input.RememberMe)
+                    </label>
+                    <a asp-page="./ForgotPassword" class="forgot-link">Forgot password?</a>
+                </div>
+
+                <!-- Submit -->
+                <button id="login-submit" type="submit" class="btn-submit">
+                    <i class="bi bi-box-arrow-in-right"></i>
+                    Sign In
+                </button>
+
+            </form>
+
+            <div class="divider"><span>or</span></div>
+
+            <div class="auth-links">
+                <a asp-page="./ResendEmailConfirmation">
+                    <i class="bi bi-envelope-check"></i>
+                    Resend email confirmation
+                </a>
+            </div>
+
+            <div class="register-cta">
+                Don't have an account?
+                <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Create one</a>
+            </div>
+
         </div>
     </div>
 
-</section>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
-
-
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-}
+    @section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+    }
+</body>
+</html>
