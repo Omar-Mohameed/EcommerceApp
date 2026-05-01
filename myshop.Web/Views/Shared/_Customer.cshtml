@@ -427,10 +427,14 @@
 
         /* ===== Responsive ===== */
         @@media (max-width: 991px) {
+            .nav-inner {
+                flex-wrap: wrap;
+            }
             .nav-links {
                 flex-direction: column;
                 align-items: flex-start;
                 padding: 0.75rem 0;
+                width: 100%;
             }
 
             .navbar-collapse {
@@ -445,6 +449,7 @@
                 padding: 0.75rem 0;
                 border-top: 1px solid var(--clr-border);
                 width: 100%;
+                justify-content: space-between;
             }
         }
 
@@ -481,7 +486,7 @@
             </button>
 
             <!-- Collapsible content -->
-            <div class="collapse navbar-collapse" id="mainNav">
+            <div class="collapse navbar-collapse w-100" id="mainNav">
 
                 <!-- Left links -->
                 <ul class="nav-links">
